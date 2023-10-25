@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <div class="user-profile">
+            <li><a href="../home/home.html">用户名</a></li>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../wordrecognize/wordRecognize.html">背单词</a></li>
+                <li><a href="../wordbook/wordBook.html">错题复习</a></li>
+                <li><a href="#">文章赏析</a></li>
+            </ul>
+        </nav>
+    </header>
+<head>
+    <title>单词列表</title>
+    <link rel="stylesheet" type="text/css" href="wordbook.css"> <!-- 引入CSS文件 -->
+</head>
+<body>
+    <div>
+        <button id="simple-word-button">简单词</button>
+        <button id="error-word-button">错误词</button>
+    </div>
+    
+    <table id="word-table" class="container">
+        <thead>
+            <tr>
+                <th>请点击按钮选择要显示的列表</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 表格中的数据将通过 JavaScript 动态添加 -->
+        </tbody>
+    </table>
+
+    <script src="wordbook.js">
+    </script>
+</body>
+</html>

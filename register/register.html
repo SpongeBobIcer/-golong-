@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>英语学习系统 - 注册</title>
+    <link rel="stylesheet" href="register.css"> <!-- 引用你的 CSS 文件 -->
+</head>
+<body>
+    <h1>注册</h1>
+    <div class="container"> <!-- 添加样式类 "container" -->
+        <form id="registerForm">
+            <input class="form-input" type="text" name="username" placeholder="用户名" required>
+            <input class="form-input" type="email" name="email" placeholder="邮箱" required>
+            <input class="form-input" type="password" name="password" placeholder="密码" required>
+            <input class="form-input" type="tel" name="phone" placeholder="电话号码">
+            <button class="form-button" type="submit">注册</button>
+        </form>
+        <div class="form-progress"> <!-- 添加样式类 "form-progress" -->
+            <!-- 在此处放置进度或消息 -->
+        </div>
+    </div>
+    <p>已有账号? 点击这里<a href="../login/login.html">登录</a></p>
+    <script src="register.js"></script>
+</body>
+</html>

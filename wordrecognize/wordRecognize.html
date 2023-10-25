@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语助学系统</title>
+    <link rel="stylesheet" href="wordRecognize.css">
+</head>
+<body>
+    <header>
+        <div class="user-profile">
+            <li><a href="../home/home.html">用户名</a></li>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">背单词</a></li>
+                <li><a href="../wordbook/wordBook.html">错题复习</a></li>
+                <li><a href="#">文章赏析</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="word-container">
+            <h1>单词</h1>
+            <p id="word">Loading...</p>
+            <p>翻译: <span id="translation">Loading...</span></p>
+
+            <div class="word-actions">
+                <button class="know-button">认识</button>
+                <button class="dont-know-button">不认识</button>
+                <button class="simple-word-button">简单词</button>
+            </div>
+            <input type="text" id="spelling-input" placeholder="输入单词拼写">
+            <button class="submit-button">提交拼写</button>
+        </div>
+        <script src="wordRecognize.js"></script>
+    </main>
+</body>
+</html>
