@@ -15,6 +15,7 @@ type User struct {
 	Username    string // 用户ID
 	Email       string // 邮箱
 	PhoneNumber string // 手机号码
+	Level       int    // 权限
 }
 
 func ShowUserDataHandler(w http.ResponseWriter, r *http.Request) {
@@ -80,8 +81,10 @@ func getUserInfoFromDatabase(userID int) (*User, error) {
 	// 在这里实现从数据库中检索用户信息的逻辑
 	query := "SELECT id,username, email, phone FROM users WHERE id = ?"
 	var username, email, phone string
-	var userid int
+	var userid, level int
 	err := db.Db.QueryRow(query, userID).Scan(&userid, &username, &email, &phone)
+	query = "SELECT level FROM user_data WHERE user_id = ?"
+	err = db.Db.QueryRow(query, userID).Scan(&level)
 	if err != nil {
 		return nil, err
 	}
@@ -92,6 +95,7 @@ func getUserInfoFromDatabase(userID int) (*User, error) {
 		Username:    username,
 		Email:       email,
 		PhoneNumber: phone,
+		Level:       level,
 	}
 
 	return user, nil

@@ -22,6 +22,7 @@ function getUserData() {
         document.getElementById("userName").textContent = data.Username;
         document.getElementById("userEmail").textContent = data.Email;
         document.getElementById("userPhone").textContent = data.PhoneNumber;
+        document.getElementById("userLevel").textContent = data.Level
     })
     .catch(error => {
         console.error("Error fetching user data:", error);

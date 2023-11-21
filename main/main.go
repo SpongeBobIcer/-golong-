@@ -1,6 +1,7 @@
 package main
 
 import (
+	"EnglishProject/article"
 	"EnglishProject/cors"
 	"EnglishProject/db"
 	"EnglishProject/login"
@@ -44,6 +45,8 @@ func main() {
 	http.HandleFunc("/deleteWord", wordbook.DeletWordFromListHandler)       //删除单词路由
 	http.HandleFunc("/showUserData", userdata.ShowUserDataHandler)          //用户信息路由
 	http.HandleFunc("/changePassword", userdata.ChangePasswordHandler)      //修改密码路由
+	http.HandleFunc("/showArticles", article.GetArticles)                   //获取文章路由
+	http.HandleFunc("/showArticleContent", article.GetArticleContent)       //获取文章内容路由
 	// 启用CORS
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		cors.EnableCORS(w, r)
