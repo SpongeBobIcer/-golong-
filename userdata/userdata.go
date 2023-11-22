@@ -4,6 +4,7 @@ import (
 	"EnglishProject/cors"
 	"EnglishProject/db"
 	"EnglishProject/jwt"
+	"database/sql"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -15,7 +16,21 @@ type User struct {
 	Username    string // 用户ID
 	Email       string // 邮箱
 	PhoneNumber string // 手机号码
-	Level       int    // 权限
+}
+type UserData struct {
+	ID            int
+	UserID        int
+	LearningCount int
+	Accuracy      float64
+	Level         int
+	DailyProgress int
+	DailyGoal     int
+	TotalGoal     int
+	TotalProgress int
+}
+type UserStruct struct {
+	UserData UserData `json:"userData"`
+	User     User     `json:"userInfo"`
 }
 
 func ShowUserDataHandler(w http.ResponseWriter, r *http.Request) {
@@ -49,9 +64,17 @@ func ShowUserDataHandler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Error retrieving user information: %v", err)
 		return
 	}
-
+	userData, err := getUserDataFromDatabase(userID)
+	if err != nil {
+		http.Error(w, "Failed to retrieve user information", http.StatusInternalServerError)
+		log.Printf("Error retrieving userData information: %v", err)
+		return
+	}
+	var userStruct UserStruct
+	userStruct.User = *user
+	userStruct.UserData = *userData
 	// 将用户信息编码为JSON并发送给前端
-	responseJSON, err := json.Marshal(user)
+	responseJSON, err := json.Marshal(userStruct)
 	if err != nil {
 		http.Error(w, "Failed to serialize JSON response", http.StatusInternalServerError)
 		log.Printf("Error serializing JSON: %v", err)
@@ -61,6 +84,56 @@ func ShowUserDataHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(responseJSON)
+}
+func getUserDataFromDatabase(userID int) (*UserData, error) {
+	// 查询数据库以根据 userID 检索用户数据。
+	query := "SELECT id, user_id, learning_count, accuracy, level, daily_progress, daily_goal, total_goal, total_progress FROM user_data WHERE user_id = ?"
+	row := db.Db.QueryRow(query, userID)
+
+	// 创建 UserData 结构以存储检索到的数据。
+	userData := &UserData{}
+	err := row.Scan(
+		&userData.ID,
+		&userData.UserID,
+		&userData.LearningCount,
+		&userData.Accuracy,
+		&userData.Level,
+		&userData.DailyProgress,
+		&userData.DailyGoal,
+		&userData.TotalGoal,
+		&userData.TotalProgress,
+	)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Printf("找不到 userID 为 %d 的用户数据，将创建新数据", userID)
+
+			// 创建新的用户数据结构
+			newUserData := &UserData{
+				UserID:        userID,
+				LearningCount: 0,
+				Accuracy:      0,
+				Level:         0,
+				DailyProgress: 0,
+				DailyGoal:     0,
+				TotalGoal:     0,
+				TotalProgress: 0,
+			}
+
+			// 插入新数据到数据库
+			insertQuery := "INSERT INTO user_data (user_id, learning_count, accuracy, level, daily_progress, daily_goal, total_goal, total_progress) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+			_, err := db.Db.Exec(insertQuery, newUserData.UserID, newUserData.LearningCount, newUserData.Accuracy, newUserData.Level, newUserData.DailyProgress, newUserData.DailyGoal, newUserData.TotalGoal, newUserData.TotalProgress)
+			if err != nil {
+				return nil, err
+			}
+
+			// 返回新创建的用户数据
+			return newUserData, nil
+		}
+		return nil, err
+	}
+
+	return userData, nil
+
 }
 func ReadPasswordFromRequest(r *http.Request) (string, string, error) {
 	var requestData struct {
@@ -81,10 +154,8 @@ func getUserInfoFromDatabase(userID int) (*User, error) {
 	// 在这里实现从数据库中检索用户信息的逻辑
 	query := "SELECT id,username, email, phone FROM users WHERE id = ?"
 	var username, email, phone string
-	var userid, level int
+	var userid int
 	err := db.Db.QueryRow(query, userID).Scan(&userid, &username, &email, &phone)
-	query = "SELECT level FROM user_data WHERE user_id = ?"
-	err = db.Db.QueryRow(query, userID).Scan(&level)
 	if err != nil {
 		return nil, err
 	}
@@ -95,7 +166,6 @@ func getUserInfoFromDatabase(userID int) (*User, error) {
 		Username:    username,
 		Email:       email,
 		PhoneNumber: phone,
-		Level:       level,
 	}
 
 	return user, nil

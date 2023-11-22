@@ -81,18 +81,22 @@ window.addEventListener("load", function () {
         spellInput.style.display = "none";
         const submitButton = document.querySelector(".submit-button");
         submitButton.style.display = "none";
+        const simpleWordButton = document.querySelector(".simple-word-button");
+        simpleWordButton.style.display = "inline";
         // 当“认识”按钮被点击时
         document.querySelector(".know-button").addEventListener("click", function () {
             translationElement.style.display = "inline";
             wordElement.style.display = "none";
             spellInput.style.display = "inline";
             submitButton.style.display = "inline";
+            simpleWordButton.style.display = "inline";
         });
 
         // 当“不认识”按钮被点击时
         document.querySelector(".dont-know-button").addEventListener("click", function () {
             translationElement.style.display = "inline";
             wordElement.style.display = "inline";
+            simpleWordButton.style.display = "none";
         });
 
         // 当“简单词”按钮被点击时
@@ -127,6 +131,7 @@ window.addEventListener("load", function () {
             wordElement.style.display = "inline";
             spellInput.style.display = "none";
             submitButton.style.display = "none";
+            simpleWordButton.style.display = "inline";
         });
     })
     .catch(error => {

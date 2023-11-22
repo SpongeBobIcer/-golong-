@@ -17,6 +17,11 @@ type Word struct {
 	Word        string `json:"word"`
 	Translation string `json:"translation"`
 }
+type Progress struct {
+	DailyGoal     int `json:"dailyGoal"`
+	DailyProgress int `json:"dailyProgress"`
+	DailyError    int `json:"dailyError"`
+}
 
 func GetRandomWordHandler(w http.ResponseWriter, r *http.Request) {
 	cors.EnableCORS(w, r)
@@ -206,4 +211,48 @@ func AddToErrorWordHandler(w http.ResponseWriter, r *http.Request) {
 			log.Println("Record updated")
 		}
 	}
+}
+func ShowProgessHandler(w http.ResponseWriter, r *http.Request) {
+	cors.EnableCORS(w, r)
+	// 从令牌获取用户信息
+	tokenString := r.Header.Get("Authorization")
+	if tokenString == "" {
+		// 未提供令牌，进行处理或返回未授权的响应
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	// 去掉 "Bearer " 前缀
+	tokenString = strings.TrimPrefix(tokenString, "Bearer ")
+
+	// 调用 ParseJWT 函数来解析和验证 JWT 令牌
+	claims, err := jwt.ParseJWT(tokenString)
+	if err != nil {
+		// 处理令牌无效或解析错误的情况
+		http.Error(w, "Token is not valid", http.StatusUnauthorized)
+		return
+	}
+
+	// 从 claims 中提取用户信息或其他数据
+	userIDFloat64 := claims["userID"].(float64)
+	userID := int(userIDFloat64)
+
+}
+func getUserDataFromDatabase(userID int) (*Progress, error) {
+	// 查询数据库以根据 userID 检索用户数据。
+	query := "SELECT daily_goal, daily_progress, total_progress FROM user_data WHERE user_id = ?"
+	row := db.Db.QueryRow(query, userID)
+
+	// 创建 UserData 结构以存储检索到的数据。
+	userProgress := &Progress{}
+	err := row.Scan(
+		&userProgress.DailyGoal,
+		&userProgress.DailyProgress,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return userProgress, nil
+
 }

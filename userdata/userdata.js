@@ -18,11 +18,17 @@ function getUserData() {
     .then(data => {
         // 更新页面上的用户信息
         console.log("user data:", data);
-        document.getElementById("userID").textContent = data.UserID;
-        document.getElementById("userName").textContent = data.Username;
-        document.getElementById("userEmail").textContent = data.Email;
-        document.getElementById("userPhone").textContent = data.PhoneNumber;
-        document.getElementById("userLevel").textContent = data.Level
+        document.getElementById("userID").textContent = data.userInfo.UserID;
+        document.getElementById("userName").textContent = data.userInfo.Username;
+        document.getElementById("userEmail").textContent = data.userInfo.Email;
+        document.getElementById("userPhone").textContent = data.userInfo.PhoneNumber;
+        document.getElementById("userLevel").textContent = data.userData.Level
+        document.getElementById("totalProgess").textContent = data.userData.TotalProgess
+        document.getElementById("dailyProgess").textContent = data.userData.DailyProgess
+        document.getElementById("totalGoal").textContent = data.userData.TotalGoal
+        document.getElementById("dailyGoal").textContent = data.userData.DailyGoal
+        document.getElementById("accuracy").textContent = data.userData.Accuracy
+        document.getElementById("learningCount").textContent = data.userData.LearningCount
     })
     .catch(error => {
         console.error("Error fetching user data:", error);
