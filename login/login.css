@@ -1,9 +1,50 @@
 @import "../assets/base.css";
 
+/* 
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.form-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form-input {
+    width: 200px;
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.form-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #0078d4;
+    color: white;
+}
+
+.form-progress {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+} */
+
 
 body {
     min-height: 90vh;
     display: flex;
+    flex-direction: column;
     place-items: center;
 }
 
