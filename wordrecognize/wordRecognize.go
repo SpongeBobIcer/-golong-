@@ -236,7 +236,7 @@ func ShowProgessHandler(w http.ResponseWriter, r *http.Request) {
 	// 从 claims 中提取用户信息或其他数据
 	userIDFloat64 := claims["userID"].(float64)
 	userID := int(userIDFloat64)
-
+	getUserDataFromDatabase(userID)
 }
 func getUserDataFromDatabase(userID int) (*Progress, error) {
 	// 查询数据库以根据 userID 检索用户数据。
