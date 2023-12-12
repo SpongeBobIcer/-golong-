@@ -14,7 +14,7 @@ function loadArticles(page) {
 }
 
 function displayArticles(articles) {
-    const articlesList = document.getElementById("articles-list");
+    const articlesList = document.querySelector(".articles-list");
 
     // 清空之前的内容
     articlesList.innerHTML = '';
@@ -34,7 +34,12 @@ function displayArticles(articles) {
         articlesList.appendChild(articleElement);
     });
 }
-
+function loadPrev(){
+    if(currentPage > 1){
+        currentPage--;
+        loadArticles(currentPage);
+    }
+}
 function loadMore() {
     // 在这里调用 loadArticles 函数来加载更多文章
     // 你需要跟踪当前页数，可能使用一个全局变量或其他方式

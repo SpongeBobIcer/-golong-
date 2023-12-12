@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户信息</title>
+    <link rel="stylesheet" type="text/css" href="userdata.css"> <!-- 引入CSS文件 -->
+</head>
+
+<body>
     <header>
         <div class="user-profile">
             <li><a href="../home/home.html">用户名</a></li>
@@ -12,26 +21,24 @@
             </ul>
         </nav>
     </header>
-    <head>
-        <title>用户信息</title>
-        <link rel="stylesheet" type="text/css" href="userdata.css"> <!-- 引入CSS文件 -->
-    </head>
-<body>
-    <div class="user-info">
-        <h1>用户信息</h1>
-        <p><strong>用户ID:</strong> <span id="userID">12345</span></p>
-        <p><strong>用户名:</strong> <span id="userName">12345</span></p>
-        <p><strong>邮箱:</strong> <span id="userEmail">user@example.com</span></p>
-        <p><strong>手机号码:</strong> <span id="userPhone">123-456-7890</span></p>
-        <p><strong>用户等级:</strong> <span id="userLevel">非会员</span></p>
-        <p><strong>学习进度:</strong> <span id="totalProgess">0</span></p>
-        <p><strong>今日进度:</strong> <span id="dailyProgess">0</span></p>
-        <p><strong>准确率:</strong> <span id="accuracy">0</span></p>
-        <p><strong>目标单词量:</strong> <span id="totalGoal">0</span></p>
-        <p><strong>今日目标单词量:</strong> <span id="dailyGoal">0</span></p>
-        <p><strong>学习完成率:</strong> <span id="learningCount">0</span></p>
-        <button id="changePasswordButton">更改密码</button>
-    </div>
+    <main>
+        <div class="user-info">
+            <h1>用户信息</h1>
+            <p><strong>用户ID：</strong> <span id="userID">Loading...</span></p>
+            <p><strong>用户名：</strong> <span id="userName">Loading...</span></p>
+            <p><strong>邮箱：</strong> <span id="userEmail">Loading...</span></p>
+            <p><strong>手机号码：</strong> <span id="userPhone">Loading...</span></p>
+            <p><strong>用户等级：</strong> <span id="userLevel">Loading...</span></p>
+            <p><strong>学习进度：</strong> <span id="totalProgess">Loading...</span></p>
+            <p><strong>今日进度：</strong> <span id="dailyProgess">Loading...</span></p>
+            <p><strong>准确率：</strong> <span id="accuracy">Loading...</span></p>
+            <p><strong>目标单词量：</strong> <span id="totalGoal">Loading...</span></p>
+            <p><strong>今日目标单词量：</strong> <span id="dailyGoal">Loading...</span></p>
+            <p><strong>学习完成率：</strong> <span id="learningCount">Loading...</span></p>
+            <button id="changePasswordButton">更改密码</button>
+        </div>
+    </main>
     <script src="userdata.js"></script>
 </body>
+
 </html>

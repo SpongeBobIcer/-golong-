@@ -31,6 +31,9 @@ function updateTable(data, tableId, content) {
     const table = document.getElementById(tableId);
     // 清空表格内容
     table.innerHTML = "";
+    // 提示文本
+    const tipText = document.getElementById("tip");
+    tipText.innerHTML = "";
 
     // 创建表头
     const headerRow = table.insertRow(0);

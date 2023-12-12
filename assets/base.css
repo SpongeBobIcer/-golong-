@@ -3,6 +3,16 @@
 :root {
     --block-width: 100%;
     --block-height: 0.6*var(--block-width);
+    --link-text-color: white;
+    --color-blue: rgb(0, 120, 212);
+    --color-light-blue: rgb(0, 120, 212, 0.5);
+    --color-green: #4caf50;
+    --color-light-green: rgba(76, 175, 80, 0.5);
+    --color-orange: rgb(255, 152, 0);
+    --color-light-orange: rgb(255, 152, 0, 0.5);
+}
+*{
+    transition: all 0.5s;
 }
 
 body {
@@ -51,6 +61,35 @@ main {
     text-align: center;
 }
 
+main>div {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
 h1 {
     font-size: 36px;
+}
+
+a {
+    color: var(--link-text-color);
+    text-decoration: none;
+
+    &:visited {
+        color: var(--link-text-color);
+    }
+
+    &:hover {
+        background-color: rgba(152, 152, 255, 0.6);
+    }
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

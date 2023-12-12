@@ -7,10 +7,6 @@
     padding: 20px;
 }
 
-.container h1 {
-    font-size: 36px;
-}
-
 .form-container {
     margin-top: 20px;
     display: flex;
@@ -41,4 +37,17 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
+}
+
+button{
+    padding: 15px;
+    margin: 10px;
+}
+.delete-button{
+    padding: 10px;
+    margin: 5px;
+}
+
+table{
+    margin: auto;
 }

@@ -1,31 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
+
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章列表</title>
     <link rel="stylesheet" type="text/css" href="article.css"> <!-- 引入CSS文件 -->
 </head>
+
 <body>
 
-<header>
-    <div class="user-profile">
-        <li><a href="../home/home.html">用户名</a></li>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="../wordrecognize/wordRecognize.html">背单词</a></li>
-            <li><a href="../wordbook/wordBook.html">错题复习</a></li>
-            <li><a href="#">文章赏析</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <div class="user-profile">
+            <li><a href="../home/home.html">用户名</a></li>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../wordrecognize/wordRecognize.html">背单词</a></li>
+                <li><a href="../wordbook/wordBook.html">错题复习</a></li>
+                <li><a href="#">文章赏析</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="article-container">
+            <h1>文章列表</h1>
+            <div class="articles-list"></div>
+            <button onclick="loadPrev()">上一页</button>
+            <button onclick="loadMore()">下一页</button>
+        </div>
+    </main>
 
-<div class="article-container">
-    <h1>文章列表</h1>
-    <div id="articles-list"></div>
-    <button onclick="loadMore()">加载更多</button>
-</div>
-
-<script src="article.js"></script>
+    <script src="article.js"></script>
 </body>
+
 </html>

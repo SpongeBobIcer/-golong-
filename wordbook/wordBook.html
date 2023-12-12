@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词列表</title>
+    <link rel="stylesheet" type="text/css" href="wordbook.css"> <!-- 引入CSS文件 -->
+</head>
+
+<body>
     <header>
         <div class="user-profile">
             <li><a href="../home/home.html">用户名</a></li>
@@ -12,28 +21,26 @@
             </ul>
         </nav>
     </header>
-<head>
-    <title>单词列表</title>
-    <link rel="stylesheet" type="text/css" href="wordbook.css"> <!-- 引入CSS文件 -->
-</head>
-<body>
-    <div>
-        <button id="simple-word-button">简单词</button>
-        <button id="error-word-button">错误词</button>
-    </div>
-    
-    <table id="word-table" class="container">
-        <thead>
-            <tr>
-                <th>请点击按钮选择要显示的列表</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 表格中的数据将通过 JavaScript 动态添加 -->
-        </tbody>
-    </table>
+    <main>
+        <div class="container">
+            <h1>单词本</h1>
+            <h4 id="tip">请点击按钮显示要列出的词集</h4>
+            <button id="simple-word-button">简单词</button>
+            <button id="error-word-button">错误词</button>
+            <table id="word-table" class="">
+                <thead>
+                    <tr>
+                        <th>Waiting...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 表格中的数据将通过 JavaScript 动态添加 -->
+                </tbody>
+            </table>
+        </div>
+    </main>
 
-    <script src="wordbook.js">
-    </script>
+    <script src="wordbook.js"></script>
 </body>
+
 </html>
