@@ -161,7 +161,7 @@ window.addEventListener("load", function () {
         .addEventListener("click", function () {
           translationElement.style.display = "inline";
           addToEasyWord(data.wordID);
-          layMsg("已加入简单词，不会再出现(可以在简单词界面移除)", {icon: 1});
+          layMsg("已加入简单词，不会再出现(可以在简单词界面移除)", { icon: 1 });
           getNewWordAndTranslation();
           translationElement.style.display = "none";
           wordElement.style.display = "inline";
@@ -173,16 +173,24 @@ window.addEventListener("load", function () {
       submitButton.addEventListener("click", function () {
         const userInput = spellInput.value;
         if (userInput === wordElement.textContent) {
-          layMsg("拼写正确！", {icon: 1});
+          layMsg("拼写正确！", { icon: 1 });
           getNewWordAndTranslation();
           wordElement.style.display = "none";
           spellInput.style.display = "none";
           submitButton.style.display = "none";
         } else {
-          layMsg("拼写错误。正确拼写是: " + wordElement.textContent, {icon: 2});
-          //错误词
-          addToErrorWord(data.wordID);
-          layMsg("已加入错误词(可以在错误词界面查看)", {icon: 2});
+          // 错误词
+          layMsg(
+            "拼写错误。正确拼写是: " + wordElement.textContent,
+            { icon: 2, time: 1500 },
+            () => {
+              addToErrorWord(data.wordID);
+              layMsg("已加入错误词(可以在错误词界面查看)", {
+                icon: 2,
+                time: 1500,
+              });
+            }
+          );
           getNewWordAndTranslation();
         }
         translationElement.style.display = "none";
