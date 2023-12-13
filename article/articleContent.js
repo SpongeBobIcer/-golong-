@@ -19,6 +19,7 @@ function loadArticleContent() {
 
 function displayArticleContent(article) {
     // 显示文章标题
+    document.title = article.title + " - 英语助学系统"
     document.getElementById("articleTitle").textContent = article.title;
 
     // 显示文章内容
