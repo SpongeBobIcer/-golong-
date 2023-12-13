@@ -1,5 +1,58 @@
 var data = {}; // 创建一个空对象来存储数据
+// 更新表格数据
+function updateTable(data, tableId, content) {
+  const table = document.getElementById(tableId);
+  // 清空表格内容
+  table.innerHTML = "";
+  // 提示文本
+  const tipText = document.getElementById("tip");
+  tipText.innerHTML = "";
 
+  // 创建表头
+  const headerRow = table.insertRow(0);
+  const wordHeader = headerRow.insertCell(0);
+  const translationHeader = headerRow.insertCell(1);
+  const errorCountHeader = headerRow.insertCell(2);
+  const deleteHeader = headerRow.insertCell(3);
+  wordHeader.innerHTML = "单词";
+  translationHeader.innerHTML = "翻译";
+  errorCountHeader.innerHTML = "错误次数";
+  deleteHeader.innerHTML = "操作";
+
+  // 检查 data 是否有效
+  if (data && data.length > 0) {
+    // 填充数据
+    for (let i = 0; i < data.length; i++) {
+      const rowData = data[i];
+      const row = table.insertRow(i + 1);
+      row.id = `word-row-${rowData.wordID}`; // 为行设置唯一ID
+      const wordCell = row.insertCell(0);
+      const translationCell = row.insertCell(1);
+      const errorCountCell = row.insertCell(2);
+      const deleteCell = row.insertCell(3);
+
+      wordCell.innerHTML = rowData.word;
+      translationCell.innerHTML = rowData.translation;
+      errorCountCell.innerHTML = rowData.errorCount;
+
+      // 创建删除按钮
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "删除";
+      deleteButton.classList.add("delete-button");
+      deleteButton.addEventListener("click", () => {
+        // 调用删除单词函数并传递内容类型和单词ID
+        deleteWordsByType(content, rowData.wordID);
+      });
+      deleteCell.appendChild(deleteButton);
+    }
+  } else {
+    // 如果 data 无效，显示一条消息或采取其他操作
+    const messageRow = table.insertRow(1);
+    const messageCell = messageRow.insertCell(0);
+    messageCell.colSpan = 4;
+    messageCell.innerHTML = "没有可用的数据。";
+  }
+}
 function getNewWordAndTranslation() {
   var request = new XMLHttpRequest();
   request.open("GET", "http://localhost:8080/getRandomWord");
@@ -108,7 +161,7 @@ window.addEventListener("load", function () {
         .addEventListener("click", function () {
           translationElement.style.display = "inline";
           addToEasyWord(data.wordID);
-          alert("已加入简单词，不会再出现(可以在简单词界面移除)");
+          layMsg("已加入简单词，不会再出现(可以在简单词界面移除)", {icon: 1});
           getNewWordAndTranslation();
           translationElement.style.display = "none";
           wordElement.style.display = "inline";
@@ -120,16 +173,16 @@ window.addEventListener("load", function () {
       submitButton.addEventListener("click", function () {
         const userInput = spellInput.value;
         if (userInput === wordElement.textContent) {
-          alert("拼写正确！");
+          layMsg("拼写正确！", {icon: 1});
           getNewWordAndTranslation();
           wordElement.style.display = "none";
           spellInput.style.display = "none";
           submitButton.style.display = "none";
         } else {
-          alert("拼写错误。正确拼写是: " + wordElement.textContent);
+          layMsg("拼写错误。正确拼写是: " + wordElement.textContent, {icon: 2});
           //错误词
           addToErrorWord(data.wordID);
-          alert("已加入错误词(可以在错误词界面查看)");
+          layMsg("已加入错误词(可以在错误词界面查看)", {icon: 2});
           getNewWordAndTranslation();
         }
         translationElement.style.display = "none";

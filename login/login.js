@@ -25,16 +25,16 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
                 } else {
                     console.log("Token not found.");
                 }
-                
+
 
                 // 重定向到 home 页面
                 window.location.href = "../home/home.html";
             } else if (request.status === 401) {
                 // 未授权
-                alert("Login failed: Invalid email or password");
+                layMsg("Login failed: Invalid email or password", {icon: 2});
             } else {
                 // 其他错误
-                alert("Login failed: " + request.statusText);
+                layMsg("Login failed: " + request.statusText, {icon: 2});
             }
         }
     };

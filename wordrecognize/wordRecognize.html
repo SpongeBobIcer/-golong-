@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>英语助学系统</title>
+    <script src="https://www.layuicdn.com/layui-v2.5.2/layui.js"></script>
+    <script src="../assets/layApi.js"></script>
     <link rel="stylesheet" href="wordRecognize.css">
 </head>
 <body>
@@ -32,6 +34,12 @@
                 <button class="simple-word-button">简单词</button>
             </div>
             <input type="text" id="spelling-input" placeholder="输入单词拼写">
+            <table id="word-table" class="">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
             <button class="submit-button">提交拼写</button>
         </div>
         <script src="wordRecognize.js"></script>

@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => {
                 if (response.status === 200) {
                     // 密码修改成功
-                    alert("密码修改成功");
+                    layMsg("密码修改成功", {icon: 1});
                 } else {
-                    alert("密码修改失败");
+                    layMsg("密码修改失败", {icon: 2});
                 }
             })
             .catch(error => {

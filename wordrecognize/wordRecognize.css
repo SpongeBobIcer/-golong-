@@ -45,3 +45,6 @@ input {
     font-size: 18px;
     outline: 0;
 }
+table {
+    margin: auto;
+}

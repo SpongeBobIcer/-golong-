@@ -11,11 +11,11 @@ window.onload = function () {
                 if (request.status === 200) {
                     // 注册成功
                     var response = request.responseText;
-                    alert("在注册过程中: " + response);
+                    layMsg("在注册过程中: " + response);
                     window.location.href = "../login/login.html";
                 } else {
                     // 注册失败
-                    alert("在注册过程中遇到错误: " + request.statusText);
+                    layMsg("在注册过程中遇到错误: " + request.statusText);
                 }
             }
         };
