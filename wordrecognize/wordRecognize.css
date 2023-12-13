@@ -2,7 +2,7 @@
 
 .word-container {
     background-color: white;
-    
+
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -29,6 +29,7 @@
     display: flex;
     justify-content: center;
 }
+
 #spelling-input {
     /* 设置文本框的样式 */
     width: 200px;
@@ -36,8 +37,10 @@
     border: 1px solid #ccc;
     padding: 8px;
     border-radius: 5px;
-    margin-top: 10px; /* 下方间距为 10px */
+    margin-top: 10px;
+    /* 下方间距为 10px */
 }
+
 input {
     margin: 10px 20px;
     line-height: 1.25em;
@@ -45,6 +48,7 @@ input {
     font-size: 18px;
     outline: 0;
 }
+
 table {
     margin: auto;
 }
