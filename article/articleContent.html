@@ -1,24 +1,36 @@
 <!-- articleContent.html -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article Content</title>
-    <style>
-        /* 添加样式，使内容更易读 */
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-    </style>
+    <title>Article Title - 英语助学系统</title>
+    <link rel="stylesheet" href="article.css">
 </head>
+
 <body>
-    <h1 id="articleTitle"></h1>
-    <div id="articleContent"></div>
+    <header>
+        <div class="user-profile">
+            <li><a href="../home/home.html">用户名</a></li>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../wordrecognize/wordRecognize.html">背单词</a></li>
+                <li><a href="../wordbook/wordBook.html">错题复习</a></li>
+                <li><a href="#">文章赏析</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <h1 id="articleTitle"></h1>
+            <div id="articleContent"></div>
+        </div>
+    </main>
 
     <script src="articleContent.js"></script>
 </body>
+
 </html>

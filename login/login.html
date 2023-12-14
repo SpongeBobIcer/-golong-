@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
+
 <head>
-    <title>英语学习系统 - 登录</title>
-    <link rel="stylesheet" href="register.css"> <!-- 引用你的 CSS 文件 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 英语助学系统</title>
+    <script src="https://www.layuicdn.com/layui-v2.5.2/layui.js"></script>
+    <script src="../assets/layApi.js"></script>
+    <link rel="stylesheet" href="login.css"> <!-- 引用你的 CSS 文件 -->
 </head>
+
 <body>
-    <h1>登录</h1>
+
     <div class="container"> <!-- 添加样式类 "container" -->
+        <h1>登录</h1>
         <form id="loginForm">
             <input class="form-input" type="email" name="email" placeholder="邮箱" required>
             <input class="form-input" type="password" name="password" placeholder="密码" required>
@@ -15,8 +22,9 @@
         <div class="form-progress"> <!-- 添加样式类 "form-progress" -->
             <!-- 在此处放置进度或消息 -->
         </div>
+        <p>没有账号?点击<a href="../register/register.html">注册</a></p>
     </div>
-    <p>没有账号?点击这里 <a href="../register/register.html">注册</a></p>
-    <script type="module" src="login.js"></script>
+    <script src="login.js"></script>
 </body>
+
 </html>

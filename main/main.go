@@ -18,7 +18,7 @@ import (
 
 func main() {
 	var err error
-	db.Db, err = sql.Open("mysql", "root:mc74094@tcp(localhost:3306)/englishlearning")
+	db.Db, err = sql.Open("mysql", "root:Hello,world!@tcp(localhost:3306)/englishlearning")
 	if err != nil {
 		fmt.Printf("Error connecting to the database: %v\n", err)
 		return
