@@ -152,6 +152,8 @@ window.addEventListener("load", function () {
         .addEventListener("click", function () {
           translationElement.style.display = "inline";
           wordElement.style.display = "inline";
+          spellInput.style.display = "none";
+          submitButton.style.display = "none";
           simpleWordButton.style.display = "none";
         });
 
