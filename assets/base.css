@@ -1,5 +1,10 @@
 /* Base css */
 
+li, ul{
+    line-height: 1;
+
+}
+
 :root {
     --block-width: 100%;
     --block-height: 0.6*var(--block-width);
@@ -10,6 +15,12 @@
     --color-light-green: rgba(76, 175, 80, 0.5);
     --color-orange: rgb(255, 152, 0);
     --color-light-orange: rgb(255, 152, 0, 0.5);
+    --color-purple: rgb(152, 0, 152);
+    --color-light-purple: rgb(152, 0, 152, 0.5);
+    --color-cyan: rgb(130, 130, 231);
+    --color-light-cyan: rgb(130, 130, 231, 0.5);
+    --color-red: rgb(215, 72, 49);
+    --color-light-red: rgb(215, 72, 49, 0.7);
 }
 a,a:hover {
     transition: all 0.5s;
@@ -29,6 +40,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 20px;
 }
 
 .user-profile img {
@@ -63,7 +75,7 @@ main {
 
 main>div {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
