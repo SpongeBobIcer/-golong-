@@ -7,7 +7,6 @@ header {
 .user-profile {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 }   
 
 .user-profile span {
@@ -16,18 +15,20 @@ header {
 
 
 .function-buttons {
-    width: var(--block-width);
-    height: var(--block-height);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .button {
-    margin: 10px;
-    padding: 100px;
+    margin: 20px 18px;
+    padding: 90px;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 0;
+    display: flexbox;
+    border-radius: 10px;
+    width: 72px;
+    height: 36px;
 }
 .button a{
     color: white;
@@ -51,5 +52,24 @@ header {
     background-color: var(--color-orange);
     &:hover{
         background-color: var(--color-light-orange);
+    }
+}
+
+.purple{
+    background-color: var(--color-purple);
+    &:hover{
+        background-color: var(--color-light-purple);
+    }
+}
+.cyan{
+    background-color: var(--color-cyan);
+    &:hover{
+        background-color: var(--color-light-cyan);
+    }
+}
+.red{
+    background-color: var(--color-red);
+    &:hover{
+        background-color: var(--color-light-red);
     }
 }
